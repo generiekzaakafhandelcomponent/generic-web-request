@@ -14,23 +14,20 @@
  * limitations under the License.
  */
 
-package com.ritense.valtimoplugins.sampleplugin.plugin
+package com.ritense.valtimoplugins.genericwebrequest.plugin
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.ritense.plugin.PluginFactory
 import com.ritense.plugin.service.PluginService
-import com.ritense.valtimo.contract.annotation.SkipComponentScan
-import com.ritense.valtimoplugins.sampleplugin.client.SampleService
-import org.springframework.stereotype.Component
+import com.ritense.valtimoplugins.genericwebrequest.client.GenericWebRequestClient
+import com.ritense.valtimoplugins.genericwebrequest.value.PropertyValueResolver
 
-/**
- * Factory class to create instances of the SamplePlugin.
- * This is required for the plugin framework to instantiate the plugin.
- */
-@SkipComponentScan
-@Component
-class SamplePluginFactory(
+class GenericWebRequestPluginFactory(
     pluginService: PluginService,
-    val sampleService: SampleService,
-) : PluginFactory<SamplePlugin>(pluginService) {
-    override fun create(): SamplePlugin = SamplePlugin(sampleService)
+    private val client: GenericWebRequestClient,
+    private val propertyValueResolver: PropertyValueResolver,
+    private val objectMapper: ObjectMapper,
+) : PluginFactory<GenericWebRequestPlugin>(pluginService) {
+    override fun create(): GenericWebRequestPlugin =
+        GenericWebRequestPlugin(client, propertyValueResolver, objectMapper)
 }

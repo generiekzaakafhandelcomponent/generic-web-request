@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.ritense.valtimoplugins.sampleplugin
+package com.ritense.valtimoplugins.genericwebrequest.domain
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
-
-@SpringBootApplication
-class TestApplication
-
-fun main(args: Array<String>) {
-    runApplication<TestApplication>(*args)
+data class WebResponse(
+    val statusCode: Int,
+    val body: String?,
+) {
+    /** The response as a process variable: only serializable, plain values. */
+    fun toVariable(): Map<String, Any?> = mapOf("statusCode" to statusCode, "body" to body)
 }

@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
-package com.ritense.valtimoplugins.sampleplugin
+package com.ritense.valtimoplugins.genericwebrequest.domain
 
-abstract class BaseTest
+/**
+ * A header or body field from the process link. The value is either a literal or a Valtimo value resolver key, such
+ * as `pv:besluitId` or `doc:/besluit/id`.
+ */
+data class KeyValue(
+    val key: String = "",
+    val value: String = "",
+)
