@@ -1,0 +1,21 @@
+[
+    {
+        "id": "a6f1f0a4-2b8e-4f4a-9a4e-5f0c1d7e3b21",
+        "title": "Example API authentication (Autodeployed)",
+        "pluginDefinitionKey": "http-client-authentication",
+        "properties": {
+            "authenticationType": "${EXAMPLE_API_AUTH_TYPE:NONE}",
+            "authHeaderName": "${EXAMPLE_API_AUTH_HEADER_NAME:}",
+            "authSecret": "${EXAMPLE_API_AUTH_SECRET:}"
+        }
+    },
+    {
+        "id": "4ac9a49f-4aeb-4f91-86d9-853fd95a1b33",
+        "title": "Example API (Autodeployed)",
+        "pluginDefinitionKey": "generic-web-request",
+        "properties": {
+            "baseUrl": "${EXAMPLE_API_URL:http://localhost:8099/api}",
+            "authenticationPluginConfiguration": "a6f1f0a4-2b8e-4f4a-9a4e-5f0c1d7e3b21"
+        }
+    }
+]

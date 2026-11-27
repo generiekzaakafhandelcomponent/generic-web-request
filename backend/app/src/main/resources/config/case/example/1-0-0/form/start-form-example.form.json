@@ -6,7 +6,7 @@
             "type": "htmlelement",
             "input": false,
             "label": "Instructions",
-            "content": "Start a new example case. The sample plugin will call a Time API during execution.",
+            "content": "Start a new example case. The generic web request plugin notifies the Example API of the besluit.",
             "tableView": false,
             "refreshOnChange": false
         },
@@ -17,6 +17,17 @@
             "label": "Name",
             "tableView": true,
             "applyMaskOn": "change"
+        },
+        {
+            "key": "pv.besluitId",
+            "type": "textfield",
+            "input": true,
+            "label": "Besluit ID",
+            "tableView": true,
+            "applyMaskOn": "change",
+            "validate": {
+                "required": true
+            }
         },
         {
             "key": "submit",

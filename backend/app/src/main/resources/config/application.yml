@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gzac-plugin-template
+    name: generic-web-request
   profiles:
     active: dev
   jackson:
@@ -116,6 +116,11 @@ valtimo:
     accepted-packages:
       - com.ritense
   includeDocumentContentInResponse: true
+  import:
+    # Environment variables that may be filled in as ${NAME} in imported config (process links, forms, ...)
+    whitelistedPaths:
+      - "valtimo.*"
+      - "EXAMPLE_.*"
 
 spring-actuator:
   username: admin
@@ -137,7 +142,3 @@ operaton:
       properties:
         deploy-changed-only: true
         enforceHistoryTimeToLive: false
-
-implementation:
-  suwinet:
-    maxAgeKindAlsThuiswonend: 100

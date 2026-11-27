@@ -6,14 +6,38 @@
         "formDefinitionName": "start-form-example"
     },
     {
-        "activityId": "time-api-sample-action",
+        "activityId": "send-besluit-notificatie",
         "activityType": "bpmn:ServiceTask:start",
         "processLinkType": "plugin",
-        "pluginDefinitionKey": "sample-plugin",
-        "pluginActionDefinitionKey": "time-api-sample-action",
+        "pluginDefinitionKey": "generic-web-request",
+        "pluginActionDefinitionKey": "send-request",
         "pluginConfigurationId": "4ac9a49f-4aeb-4f91-86d9-853fd95a1b33",
         "actionProperties": {
-            "message": "Hello from the sample plugin!"
+            "method": "POST",
+            "path": "/notifications",
+            "body": [
+                {
+                    "key": "hoofdObject",
+                    "value": "Aanvraag"
+                },
+                {
+                    "key": "resource",
+                    "value": "Aanvraag"
+                },
+                {
+                    "key": "resourceUrl",
+                    "value": "${EXAMPLE_RESOURCE_URL}/pv:besluitId"
+                },
+                {
+                    "key": "actie",
+                    "value": "Create"
+                },
+                {
+                    "key": "aanmaakdatum",
+                    "value": "pv:aanmaakdatum"
+                }
+            ],
+            "resultVariable": "notificatieResultaat"
         }
     }
 ]
