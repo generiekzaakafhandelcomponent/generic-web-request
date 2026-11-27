@@ -1,4 +1,4 @@
-rootProject.name = "gzac-plugin-template"
+rootProject.name = "generic-web-request"
 include(
     "backend",
     "backend:app",

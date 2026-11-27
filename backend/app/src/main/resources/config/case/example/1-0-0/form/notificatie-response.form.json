@@ -1,0 +1,24 @@
+{
+    "display": "form",
+    "components": [
+        {
+            "key": "notificatieResponse",
+            "type": "textarea",
+            "input": true,
+            "label": "Gateway response",
+            "hideLabel": true,
+            "disabled": true,
+            "autoExpand": true,
+            "rows": 10,
+            "spellcheck": false,
+            "tableView": false,
+            "customClass": "gateway-response",
+            "attributes": {
+                "style": "font-family: monospace; white-space: pre;"
+            },
+            "calculateValue": "var response = data.notificatieResponse; var unpack = function (key, item) { if (typeof item === 'string' && /^\\s*[\\[{]/.test(item)) { try { return JSON.parse(item, unpack); } catch (e) { return item; } } return item; }; try { value = JSON.stringify(JSON.parse(response, unpack), null, 2); } catch (e) { value = response; }",
+            "allowCalculateOverride": false,
+            "persistent": false
+        }
+    ]
+}

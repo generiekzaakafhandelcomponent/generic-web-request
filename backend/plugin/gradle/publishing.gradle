@@ -23,8 +23,8 @@ pluginManager.withPlugin("maven-publish") {
                 version = pluginProperties.pluginVersion
 
                 pom {
-                    name = "Sample plugin module"
-                    description = "A module containing a sample plugin"
+                    name = "Generic web request plugin"
+                    description = "A Valtimo plugin that sends configurable HTTP requests to external systems"
                     developers {
                         developer {
                             id = "team-valtimo"

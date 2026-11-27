@@ -15,11 +15,11 @@
  */
 
 /*
- * Public API Surface of sample-plugin
+ * Public API Surface of generic-web-request
  */
 
-export * from "./lib/plugins/sample-plugin/models";
-export * from "./lib/plugins/sample-plugin/sample-plugin-module";
-export * from "./lib/plugins/sample-plugin/sample-plugin.specification";
-export * from "./lib/plugins/sample-plugin/components/sample-plugin-configuration/sample-plugin-configuration.component";
-export * from "./lib/plugins/sample-plugin/components/sample-action-configuration/sample-action-configuration.component";
+export * from "./lib/plugins/generic-web-request/models";
+export * from "./lib/plugins/generic-web-request/generic-web-request.module";
+export * from "./lib/plugins/generic-web-request/generic-web-request.specification";
+export * from "./lib/plugins/generic-web-request/components/generic-web-request-configuration/generic-web-request-configuration.component";
+export * from "./lib/plugins/generic-web-request/components/send-request-configuration/send-request-configuration.component";

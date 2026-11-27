@@ -1,21 +1,72 @@
-# GZAC Plugin Template
+# Generic Web Request plugin
 
-A template repository for building your own GZAC plugins. Copy this project to get a ready-made structure with build
-configuration, CI/CD workflows, and a working example to start from.
+A GZAC/Valtimo plugin that sends a configurable HTTP request to an external system from a BPMN service task.
+Built from the GZAC Plugin Template.
 
-## Getting started
+## Features
 
-1. Copy or fork this repository
-2. Rename the sample plugin package, module, and configuration to match your plugin
-3. Follow the [Getting Started](documentation/getting-started.md) guide for setup and development instructions
+- **One configuration per external system**: a base URL and an
+  [HTTP Client Authentication](https://github.com/valtimo-platform/valtimo-plugins) configuration (none, API key header,
+  basic, bearer, token, ZGW JWT, token exchange, SAML token or mutual TLS).
+- **Action `send-request`**: method (GET, POST, PUT, PATCH, DELETE), path, headers and body set per process link.
+  Headers and body fields are key/value pairs; the body is sent as a JSON object.
+- **Values from the case**: each value is literal text, a value resolver key such as `pv:id` or `doc:/path` (keeping its
+  type), or text with keys in it, such as `https://example.com/items/pv:id`. Environment variables can be used as
+  `${NAME}` through Valtimo's import whitelist.
+- **Result and errors**: the response (`statusCode`, `body`) can be stored in a process variable. The task fails on a
+  value that can't be resolved, an unreachable server or a non-2xx response, so it can be retried as an incident.
+
+## Compatibility
+
+| Component                   | Version  |
+|-----------------------------|----------|
+| GZAC/Valtimo                | 13.48.0  |
+| HTTP Client Authentication  | 3.1.1    |
+| Java                        | 21       |
+| Angular (frontend)          | 19       |
+
+## Installation
+
+Backend:
+
+```kotlin
+implementation("com.ritense.valtimoplugins:generic-web-request:0.0.1")
+```
+
+Frontend:
+
+```shell
+npm install @valtimo-plugins/generic-web-request@0.0.1 @valtimo-plugins/http-client-authentication@3.1.1
+```
+
+Then register both plugin modules and specifications in `app.module.ts`, as described in the
+[plugin documentation](documentation/plugin.md#frontend).
+
+## Example
+
+A process link that posts a notification with a value from the process:
+
+```json
+{
+    "method": "POST",
+    "path": "/notifications",
+    "body": [
+        {"key": "actie", "value": "Create"},
+        {"key": "resourceUrl", "value": "${EXAMPLE_RESOURCE_URL}/pv:besluitId"}
+    ],
+    "resultVariable": "notificatieResultaat"
+}
+```
+
+The [example application](documentation/example-application.md) runs this against a local mock API.
 
 ## Documentation
 
-- [Getting Started](documentation/getting-started.md) — setup and development instructions
-- [Example Application](documentation/example-application.md) — running the example app locally
-- [Sample Plugin](documentation/plugin.md) — reference implementation included in this template
-- [Release notes](documentation/release-notes.md) — versiegeschiedenis en wijzigingen
+- [Generic Web Request plugin](documentation/plugin.md): configuration, actions, values and error handling
+- [Example Application](documentation/example-application.md): running the example app locally
+- [Getting Started](documentation/getting-started.md): project structure, building and testing, releasing
+- [Release notes](documentation/release-notes.md): changes per version
 
 ## Contact
 
--- naam contactpersoon (bedrijfsnaam)
+Ayub Abdulkader (Ritense)
