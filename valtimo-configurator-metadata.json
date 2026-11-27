@@ -1,17 +1,17 @@
 {
-    "name": "sample-plugin",
+    "name": "generic-web-request",
     "version": 1,
     "backend": [
         {
-            "import": "com.ritense.valtimoplugins:sample-plugin"
+            "import": "com.ritense.valtimoplugins:generic-web-request"
         }
     ],
     "frontend": {
-        "import": "@valtimo-plugins/sample-plugin",
+        "import": "@valtimo-plugins/generic-web-request",
         "codeAdditions": [
             {
-                "spec": "samplePluginSpecification",
-                "module": "SamplePluginModule"
+                "spec": "genericWebRequestPluginSpecification",
+                "module": "GenericWebRequestPluginModule"
             }
         ]
     }

@@ -135,7 +135,7 @@
                 }
             }
         },
-        "@valtimo-plugins/sample-plugin": {
+        "@valtimo-plugins/generic-web-request": {
             "projectType": "library",
             "root": "projects/plugin",
             "sourceRoot": "projects/plugin/src",
