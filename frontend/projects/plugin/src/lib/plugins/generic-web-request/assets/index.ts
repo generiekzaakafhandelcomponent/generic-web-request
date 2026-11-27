@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export * from "./sample-plugin-logo";
+export * from "./generic-web-request-logo";

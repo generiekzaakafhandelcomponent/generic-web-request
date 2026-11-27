@@ -24,22 +24,38 @@
   <v-input
     name="configurationTitle"
     [title]="'configurationTitle' | pluginTranslate: pluginId | async"
+    [tooltip]="'configurationTitleTooltip' | pluginTranslate: pluginId | async"
     [margin]="true"
     [disabled]="obs.disabled"
     [defaultValue]="obs.prefill?.configurationTitle"
     [required]="true"
-    [widthPx]="350"
-    placeholder="Sample Plugin"
+    [trim]="true"
+    placeholder="Example API"
   >
   </v-input>
   <v-input
-    name="apiUrl"
-    [title]="'apiUrl' | pluginTranslate: pluginId | async"
+    name="baseUrl"
+    [title]="'baseUrl' | pluginTranslate: pluginId | async"
+    [tooltip]="'baseUrlTooltip' | pluginTranslate: pluginId | async"
     [margin]="true"
     [disabled]="obs.disabled"
-    [defaultValue]="obs.prefill?.apiUrl"
+    [defaultValue]="obs.prefill?.baseUrl"
     [required]="true"
-    [widthPx]="350"
+    [trim]="true"
+    placeholder="https://gateway.example.com/api"
   >
   </v-input>
+  <ng-container *ngIf="{items: authenticationPluginSelectItems$ | async} as authObs">
+    <v-select
+      name="authenticationPluginConfiguration"
+      [items]="authObs.items"
+      [title]="'authenticationPluginConfiguration' | pluginTranslate: pluginId | async"
+      [tooltip]="'authenticationPluginConfigurationTooltip' | pluginTranslate: pluginId | async"
+      [margin]="true"
+      [disabled]="obs.disabled"
+      [defaultSelectionId]="obs.prefill?.authenticationPluginConfiguration"
+      [required]="true"
+      [loading]="!authObs.items"
+    ></v-select>
+  </ng-container>
 </v-form>

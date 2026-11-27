@@ -16,12 +16,25 @@
 
 import {PluginConfigurationData} from "@valtimo/plugin";
 
-interface SamplePluginConfig extends PluginConfigurationData {
-  apiUrl: string;
+type RequestMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+
+/** A header or body field. The value is a literal, or a value resolver key such as pv:besluitId. */
+interface KeyValue {
+  key: string;
+  value: string;
 }
 
-interface SampleActionConfig {
-  message: string;
+interface GenericWebRequestConfig extends PluginConfigurationData {
+  baseUrl: string;
+  authenticationPluginConfiguration: string;
 }
 
-export {SamplePluginConfig, SampleActionConfig};
+interface SendRequestConfig {
+  method: RequestMethod;
+  path?: string;
+  headers?: KeyValue[];
+  body?: KeyValue[];
+  resultVariable?: string;
+}
+
+export {RequestMethod, KeyValue, GenericWebRequestConfig, SendRequestConfig};
