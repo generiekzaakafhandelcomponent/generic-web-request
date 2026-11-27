@@ -69,4 +69,4 @@ The [example application](documentation/example-application.md) runs this agains
 
 ## Contact
 
--- naam contactpersoon (bedrijfsnaam)
+Ayub Abdulkader (Ritense)
